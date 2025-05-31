@@ -1,0 +1,6 @@
+@use "../abstracts/variables" as vars;
+
+.hero {
+  padding-block: 5rem;
+  background-color: vars.$color-neutral-silver;
+}

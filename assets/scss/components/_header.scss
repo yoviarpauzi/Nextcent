@@ -1,0 +1,155 @@
+@use "../abstracts/variables" as vars;
+@use "../abstracts/functions" as func;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-block: 1rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .nav__logo {
+    display: flex;
+    align-items: center;
+    width: func.pxToRem(120);
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  .nav__menu {
+    position: absolute;
+    top: -1000px;
+    left: 0;
+    right: 0;
+    background-color: vars.$color-neutral-white;
+    padding-block: 3rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s;
+
+    .nav__close {
+      position: absolute;
+      top: 0.8rem;
+      right: 0.7rem;
+      font-size: 2rem;
+    }
+
+    .nav__list {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      row-gap: 1rem;
+
+      li:first-child .nav__link {
+        font-weight: vars.$font-medium;
+      }
+
+      .nav__link {
+        color: vars.$text-gray-900;
+        font-size: 1rem;
+        width: 10rem;
+      }
+
+      .nav__link:hover {
+        font-weight: vars.$font-medium;
+      }
+    }
+
+    .nav__button {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      column-gap: 2rem;
+    }
+  }
+
+  button {
+    width: 91px;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+
+  .button__login {
+    background-color: inherit;
+    color: vars.$color-primary;
+  }
+
+  .button__login:hover {
+    color: vars.$color-neutral-white;
+    background-color: vars.$color-primary;
+  }
+
+  .button__signup {
+    background-color: vars.$color-primary;
+    color: vars.$color-neutral-white;
+  }
+
+  .button__signup:hover {
+    background-color: rgba(76, 175, 79, 0.8);
+  }
+
+  .nav__button {
+    display: none;
+  }
+
+  .nav__toggle {
+    font-size: func.pxToRem(24);
+    font-weight: vars.$font-bold;
+  }
+
+  @media (min-width: 640px) {
+    .nav__menu {
+      .nav__close {
+        top: 0.6rem;
+        right: 5.7rem;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .nav__button {
+      display: flex;
+      column-gap: 1rem;
+    }
+
+    .nav__toggle {
+      display: none;
+    }
+
+    .nav__menu {
+      position: initial;
+      background: none;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+
+      .nav__close {
+        display: none;
+      }
+
+      .nav__list {
+        flex-direction: row;
+        text-align: center;
+        column-gap: 2rem;
+      }
+
+      .nav__button {
+        display: none;
+      }
+    }
+  }
+}
+
+div.nav__menu.show__menu {
+  top: 0 !important;
+}
